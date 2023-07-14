@@ -9,21 +9,21 @@
     </div>
   </div>
 
-  <DetailComponent v-if="showDetails" :name="name" :url="url" @close="reverseShowDetails()" />
+  <DetailComponent v-if="showDetails" :name="name" :url="url" :id="id" @close="reverseShowDetails()" />
 </template>
 
 <script setup>
 
 import DetailComponent from './DetailComponent.vue'
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
-let showDetails = ref(false);
-
-defineProps({
+const props = defineProps({
   name: String,
   url: String,
   id: String,
 });
+
+const showDetails = ref(false);
 
 function reverseShowDetails() {
   showDetails.value = !showDetails.value

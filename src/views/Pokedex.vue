@@ -15,7 +15,7 @@
         <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 
                     lg:grid-cols-5 xl:grid-cols-5 gap-5">
             <div v-for="(pokemon, id) in pokemonsDisplayed">
-                <CardComponent :name="pokemon.name" :id="getPokemonId(pokemon.url)" :url="pokemon.url" />
+                <CardComponent :name="pokemon.name" :url="pokemon.url" :id="getPokemonId(pokemon.url)" />
             </div>
         </div>
 
@@ -43,12 +43,12 @@ const maxNumberOfPokemons = 152
 const numberOfPokemonPerPage = 25
 
 const allPokemons = ref([])
-let pokemonsDisplayed = ref([])
-let filteredPokemons = ref([])
+const pokemonsDisplayed = ref([])
+const filteredPokemons = ref([])
 let currentPage = 0
-let maxPage = ref(Math.ceil((maxNumberOfPokemons / numberOfPokemonPerPage) - 1));
+const maxPage = ref(Math.ceil((maxNumberOfPokemons / numberOfPokemonPerPage) - 1));
 
-let input = ref("");
+const input = ref("");
 
 function fetchPokemons() {
     fetch(pokeApiUrl + '?limit=' + maxNumberOfPokemons)
@@ -92,6 +92,7 @@ function displaySearchedPokemons() {
 }
 
 function getPokemonId(pokemonUrl) {
+    console.log(pokemonUrl.split("/")[6])
     return pokemonUrl.split("/")[6];
 }
 
