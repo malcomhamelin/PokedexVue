@@ -3,9 +3,5 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <div>
-    Pokedex Vue
-  </div>
-
   <RouterView />
 </template>
