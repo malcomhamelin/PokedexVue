@@ -15,19 +15,19 @@
         <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 
                     lg:grid-cols-5 xl:grid-cols-5 gap-5">
             <div v-for="(pokemon, id) in pokemonsDisplayed">
-                <CardComponent :name="pokemon.name" :id="getPokemonId(pokemon.url)" />
+                <CardComponent :name="pokemon.name" :id="getPokemonId(pokemon.url)" :url="pokemon.url" />
             </div>
+        </div>
 
-            <div class="inline-flex">
-                <button class="bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-l"
-                        :disabled="currentPage == 0" :class="[ currentPage == 0 ? 'cursor-not-allowed opacity-50' : 'hover:bg-gray-400']" @click="previousPage">
-                    Prev
-                </button>
-                <button class="bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-r"
-                        :disabled="currentPage == maxPage" :class="[ currentPage == maxPage ? 'cursor-not-allowed opacity-50' : 'hover:bg-gray-400']" @click="nextPage">
-                    Next
-                </button>
-            </div>
+        <div class="flex grid-cols-2 items-center justify-center mb-5">
+            <button class="bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-l"
+                    :disabled="currentPage == 0" :class="[ currentPage == 0 ? 'cursor-not-allowed opacity-50' : 'hover:bg-gray-400']" @click="previousPage">
+                Prev
+            </button>
+            <button class="bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-r"
+                    :disabled="currentPage == maxPage" :class="[ currentPage == maxPage ? 'cursor-not-allowed opacity-50' : 'hover:bg-gray-400']" @click="nextPage">
+                Next
+            </button>
         </div>
     </div>
     
